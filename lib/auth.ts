@@ -1,8 +1,11 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
+import type { User } from "./types";
 import prisma from "./prisma";
 
-export const validateRoute = (handler: any) => {
+export const validateRoute = (
+  handler: (req: NextApiRequest, res: NextApiResponse, user: User) => void
+) => {
   return async (req: NextApiRequest, res: NextApiResponse) => {
     const { TRAX_ACCESS_TOKEN: token } = req.cookies;
 
