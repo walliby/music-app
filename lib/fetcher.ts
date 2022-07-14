@@ -1,9 +1,9 @@
-const fetcher = (url: string, data = undefined) => {
+const fetcher = (url: string, data: {} | undefined = undefined) => {
   return fetch(`${window.location.origin}/api${url}`, {
     method: data ? "POST" : "GET",
     credentials: "include",
     headers: {
-      "Content-Type": "applications/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   });
